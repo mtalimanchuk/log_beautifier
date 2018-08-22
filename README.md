@@ -1,4 +1,4 @@
 # log_beautifier
-Filters logs by given criteria
+Filters SL4J format logs by given criteria
 
 Add logs to src/log.txt
