@@ -1,0 +1,498 @@
+2018-08-23 18:42:34.656  WARN 2500 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-23 18:42:34.668  WARN 2500 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-23 18:42:34.716  WARN 2500 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-23 18:42:34.721  WARN 2500 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-23 18:42:43.091  WARN 2500 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-23 18:42:43.103  WARN 2500 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 02:16:58.656  WARN 2500 --- [DiscoveryClient-InstanceInfoReplicator-0] o.s.b.a.health.MailHealthIndicator       : Health check failed
+
+com.sun.mail.util.MailConnectException: Couldn't connect to host, port: smtp.yandex.ru, 465; timeout -1
+	at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2118) ~[javax.mail-1.5.6.jar!/:1.5.6]
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:712) ~[javax.mail-1.5.6.jar!/:1.5.6]
+	at javax.mail.Service.connect(Service.java:366) ~[javax.mail-1.5.6.jar!/:1.5.6]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:501) ~[spring-context-support-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.testConnection(JavaMailSenderImpl.java:382) ~[spring-context-support-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.boot.actuate.health.MailHealthIndicator.doHealthCheck(MailHealthIndicator.java:40) ~[spring-boot-actuator-1.5.8.RELEASE.jar!/:1.5.8.RELEASE]
+	at org.springframework.boot.actuate.health.AbstractHealthIndicator.health(AbstractHealthIndicator.java:43) ~[spring-boot-actuator-1.5.8.RELEASE.jar!/:1.5.8.RELEASE]
+	at org.springframework.boot.actuate.health.CompositeHealthIndicator.health(CompositeHealthIndicator.java:68) [spring-boot-actuator-1.5.8.RELEASE.jar!/:1.5.8.RELEASE]
+	at org.springframework.cloud.netflix.eureka.EurekaHealthCheckHandler.getHealthStatus(EurekaHealthCheckHandler.java:103) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at org.springframework.cloud.netflix.eureka.EurekaHealthCheckHandler.getStatus(EurekaHealthCheckHandler.java:99) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at com.netflix.discovery.DiscoveryClient.refreshInstanceInfo(DiscoveryClient.java:1362) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:100) [eureka-client-1.6.2.jar!/:1.6.2]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_171]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_171]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [na:1.8.0_171]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [na:1.8.0_171]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_171]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_171]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_171]
+Caused by: java.net.ConnectException: Connection timed out (Connection timed out)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_171]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_171]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_171]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_171]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_171]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_171]
+	at java.net.Socket.connect(Socket.java:538) ~[na:1.8.0_171]
+	at com.sun.mail.util.SocketFetcher.createSocket(SocketFetcher.java:331) ~[javax.mail-1.5.6.jar!/:1.5.6]
+	at com.sun.mail.util.SocketFetcher.getSocket(SocketFetcher.java:238) ~[javax.mail-1.5.6.jar!/:1.5.6]
+	at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2084) ~[javax.mail-1.5.6.jar!/:1.5.6]
+	... 18 common frames omitted
+
+2018-08-24 02:17:00.366  WARN 2500 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535066220366, current=DOWN, previous=UP]
+2018-08-24 02:17:00.595  WARN 2500 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535066220595, current=UP, previous=DOWN]
+2018-08-24 10:29:59.581  WARN 2500 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535095799581, current=DOWN, previous=UP]
+2018-08-24 10:29:59.594  WARN 2500 --- [Thread-7] ationConfigEmbeddedWebApplicationContext : Exception thrown from ApplicationListener handling ContextClosedEvent
+
+java.lang.reflect.UndeclaredThrowableException: Failed to invoke event listener method
+HandlerMethod details:
+Bean [org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration]
+Method [public void org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.onApplicationEvent(org.springframework.context.event.ContextClosedEvent)]
+Resolved arguments:
+[0] [type=org.springframework.context.event.ContextClosedEvent] [value=org.springframework.context.event.ContextClosedEvent[source=org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5ace1ed4: startup date [Thu Aug 23 18:42:25 MSK 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@79b06cab]]
+
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:273) ~[spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.processEvent(ApplicationListenerMethodAdapter.java:177) ~[spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.onApplicationEvent(ApplicationListenerMethodAdapter.java:140) ~[spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172) ~[spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165) ~[spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139) ~[spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:393) ~[spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:347) ~[spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:991) ~[spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext$2.run(AbstractApplicationContext.java:929) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+Caused by: java.lang.NoClassDefFoundError: com/netflix/discovery/shared/transport/decorator/EurekaHttpClientDecorator$2
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:885) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:863) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.DiscoveryClient$$FastClassBySpringCGLIB$$a84c8cb4.invoke(<generated>) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204) ~[spring-core-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:738) ~[spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157) ~[spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.cloud.context.config.StandardBeanLifecycleDecorator$2.invoke(StandardBeanLifecycleDecorator.java:85) ~[spring-cloud-context-1.2.4.RELEASE.jar!/:1.2.4.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) ~[spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:673) ~[spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.cloud.netflix.eureka.CloudEurekaClient$$EnhancerBySpringCGLIB$$6290aa1.shutdown(<generated>) ~[spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry.deregister(EurekaServiceRegistry.java:71) ~[spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.stop(EurekaAutoServiceRegistration.java:82) ~[spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.onApplicationEvent(EurekaAutoServiceRegistration.java:126) ~[spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_171]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_171]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_171]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_171]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:256) ~[spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	... 9 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[na:1.8.0_171]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_171]
+	at org.springframework.boot.loader.LaunchedURLClassLoader.loadClass(LaunchedURLClassLoader.java:94) ~[main.jar:0.1.27-SNAPSHOT]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_171]
+	... 28 common frames omitted
+
+2018-08-24 10:29:59.604  WARN 2500 --- [Thread-7] o.s.c.support.DefaultLifecycleProcessor  : Failed to stop bean 'documentationPluginsBootstrapper'
+
+java.lang.NoClassDefFoundError: org/springframework/context/support/DefaultLifecycleProcessor$1
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStop(DefaultLifecycleProcessor.java:231) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$300(DefaultLifecycleProcessor.java:50) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.stop(DefaultLifecycleProcessor.java:365) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.DefaultLifecycleProcessor.stopBeans(DefaultLifecycleProcessor.java:204) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.DefaultLifecycleProcessor.onClose(DefaultLifecycleProcessor.java:120) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:999) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext$2.run(AbstractApplicationContext.java:929) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+Caused by: java.lang.ClassNotFoundException: org.springframework.context.support.DefaultLifecycleProcessor$1
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[na:1.8.0_171]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_171]
+	at org.springframework.boot.loader.LaunchedURLClassLoader.loadClass(LaunchedURLClassLoader.java:94) ~[main.jar:0.1.27-SNAPSHOT]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_171]
+	... 7 common frames omitted
+
+2018-08-24 10:31:09.824  WARN 23852 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-24 10:31:51.961  WARN 23852 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 10:31:51.969  WARN 23852 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 10:31:52.207  WARN 23852 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 10:31:52.214  WARN 23852 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 10:32:28.334  WARN 23852 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 10:32:28.378  WARN 23852 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 11:52:06.472  WARN 23852 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535100726472, current=DOWN, previous=UP]
+2018-08-24 11:53:12.989  WARN 26490 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-24 11:53:55.293  WARN 26490 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 11:53:55.335  WARN 26490 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 11:53:55.550  WARN 26490 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 11:53:55.555  WARN 26490 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 11:54:32.350  WARN 26490 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 11:54:32.390  WARN 26490 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 12:10:56.459  WARN 26490 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535101856459, current=DOWN, previous=UP]
+2018-08-24 12:10:56.552 ERROR 26490 --- [Thread-7] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error
+
+com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource$Builder.delete(WebResource.java:591) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.cancel(AbstractJerseyEurekaHttpClient.java:76) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:89) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:119) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:885) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:863) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.DiscoveryClient$$FastClassBySpringCGLIB$$a84c8cb4.invoke(<generated>) [eureka-client-1.6.2.jar!/:1.6.2]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204) [spring-core-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:738) [spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157) [spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.cloud.context.config.StandardBeanLifecycleDecorator$2.invoke(StandardBeanLifecycleDecorator.java:85) [spring-cloud-context-1.2.4.RELEASE.jar!/:1.2.4.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) [spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:673) [spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.cloud.netflix.eureka.CloudEurekaClient$$EnhancerBySpringCGLIB$$4f94702e.shutdown(<generated>) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry.deregister(EurekaServiceRegistry.java:71) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.stop(EurekaAutoServiceRegistration.java:82) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.onApplicationEvent(EurekaAutoServiceRegistration.java:126) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_171]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_171]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_171]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_171]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:256) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.processEvent(ApplicationListenerMethodAdapter.java:177) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.onApplicationEvent(ApplicationListenerMethodAdapter.java:140) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:393) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:347) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:991) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext$2.run(AbstractApplicationContext.java:929) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_171]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_171]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_171]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_171]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_171]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_171]
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:610) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:445) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	... 46 common frames omitted
+
+2018-08-24 12:10:56.553  WARN 26490 --- [Thread-7] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2018-08-24 12:10:56.578 ERROR 26490 --- [Thread-7] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error
+
+com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource$Builder.delete(WebResource.java:591) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.cancel(AbstractJerseyEurekaHttpClient.java:76) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:118) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:119) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:885) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:863) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.DiscoveryClient$$FastClassBySpringCGLIB$$a84c8cb4.invoke(<generated>) [eureka-client-1.6.2.jar!/:1.6.2]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204) [spring-core-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:738) [spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157) [spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.cloud.context.config.StandardBeanLifecycleDecorator$2.invoke(StandardBeanLifecycleDecorator.java:85) [spring-cloud-context-1.2.4.RELEASE.jar!/:1.2.4.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) [spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:673) [spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.cloud.netflix.eureka.CloudEurekaClient$$EnhancerBySpringCGLIB$$4f94702e.shutdown(<generated>) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry.deregister(EurekaServiceRegistry.java:71) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.stop(EurekaAutoServiceRegistration.java:82) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.onApplicationEvent(EurekaAutoServiceRegistration.java:126) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_171]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_171]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_171]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_171]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:256) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.processEvent(ApplicationListenerMethodAdapter.java:177) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.onApplicationEvent(ApplicationListenerMethodAdapter.java:140) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:393) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:347) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:991) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext$2.run(AbstractApplicationContext.java:929) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_171]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_171]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_171]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_171]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_171]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_171]
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:610) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:445) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.3.jar!/:4.5.3]
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	... 47 common frames omitted
+
+2018-08-24 12:10:56.579  WARN 26490 --- [Thread-7] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2018-08-24 12:10:56.611 ERROR 26490 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_MAIN-SRV/192.168.70.15:main-srv:10020 - de-registration failedCannot execute request on any known server
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:111) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:885) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:863) [eureka-client-1.6.2.jar!/:1.6.2]
+	at com.netflix.discovery.DiscoveryClient$$FastClassBySpringCGLIB$$a84c8cb4.invoke(<generated>) [eureka-client-1.6.2.jar!/:1.6.2]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204) [spring-core-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:738) [spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157) [spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.cloud.context.config.StandardBeanLifecycleDecorator$2.invoke(StandardBeanLifecycleDecorator.java:85) [spring-cloud-context-1.2.4.RELEASE.jar!/:1.2.4.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) [spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:673) [spring-aop-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.cloud.netflix.eureka.CloudEurekaClient$$EnhancerBySpringCGLIB$$4f94702e.shutdown(<generated>) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry.deregister(EurekaServiceRegistry.java:71) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.stop(EurekaAutoServiceRegistration.java:82) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration.onApplicationEvent(EurekaAutoServiceRegistration.java:126) [spring-cloud-netflix-eureka-client-1.3.5.RELEASE.jar!/:1.3.5.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_171]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_171]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_171]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_171]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:256) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.processEvent(ApplicationListenerMethodAdapter.java:177) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.onApplicationEvent(ApplicationListenerMethodAdapter.java:140) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:393) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:347) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:991) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext$2.run(AbstractApplicationContext.java:929) [spring-context-4.3.12.RELEASE.jar!/:4.3.12.RELEASE]
+
+2018-08-24 12:11:53.296  WARN 27409 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-24 12:12:34.704  WARN 27409 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 12:12:34.747  WARN 27409 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 12:12:34.845  WARN 27409 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 12:12:34.874  WARN 27409 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 12:13:15.538  WARN 27409 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 12:13:15.585  WARN 27409 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 12:19:35.639  WARN 27409 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535102375639, current=DOWN, previous=UP]
+2018-08-24 12:20:39.041  WARN 28278 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-24 12:21:21.290  WARN 28278 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 12:21:21.388  WARN 28278 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 12:21:21.468  WARN 28278 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 12:21:21.498  WARN 28278 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 12:21:53.531  WARN 28278 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 12:21:53.612  WARN 28278 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 12:26:48.484  WARN 28278 --- [http-nio-10020-exec-9] .s.s.m.s.s.r.u.CreditRequestRisksHandler : Error processing account reservation for inn: 746001732475 with error: У клиента уже есть открытый счет!
+2018-08-24 12:26:48.485  WARN 28278 --- [http-nio-10020-exec-9] c.s.s.m.s.s.r.s.CreditRequestService     : RequestRiskHandler returned an error: У клиента уже есть открытый счет!
+2018-08-24 12:29:46.916  WARN 28278 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535102986916, current=DOWN, previous=UP]
+2018-08-24 12:30:53.702  WARN 29135 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-24 12:31:35.950  WARN 29135 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 12:31:35.971  WARN 29135 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 12:31:36.129  WARN 29135 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 12:31:36.137  WARN 29135 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 12:32:09.780  WARN 29135 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 12:32:09.880  WARN 29135 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 13:05:28.650  WARN 29135 --- [http-nio-10020-exec-8] c.s.s.c.s.t.kontur.CreditRiskReceiver    : Received error message from KonturKycService for inn: 560028400
+2018-08-24 13:05:28.651  WARN 29135 --- [http-nio-10020-exec-8] .s.s.m.s.s.r.u.CreditRequestRisksHandler : Error processing scoring result for inn/ogrn: 560028400 with error: Произошла ошибка во время получения скоринг бала.
+2018-08-24 13:05:28.651  WARN 29135 --- [http-nio-10020-exec-8] c.s.s.m.s.s.r.s.CreditRequestService     : RequestRiskHandler returned an error: Произошла ошибка во время получения скоринг бала.
+2018-08-24 13:06:41.259  WARN 29135 --- [http-nio-10020-exec-8] c.s.s.c.s.t.kontur.CreditRiskReceiver    : Received error message from KonturKycService for inn: 541025806
+2018-08-24 13:06:41.260  WARN 29135 --- [http-nio-10020-exec-8] .s.s.m.s.s.r.u.CreditRequestRisksHandler : Error processing scoring result for inn/ogrn: 541025806 with error: Произошла ошибка во время получения скоринг бала.
+2018-08-24 13:06:41.260  WARN 29135 --- [http-nio-10020-exec-8] c.s.s.m.s.s.r.s.CreditRequestService     : RequestRiskHandler returned an error: Произошла ошибка во время получения скоринг бала.
+2018-08-24 13:08:04.400  WARN 29135 --- [http-nio-10020-exec-10] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
+2018-08-24 13:16:08.003  WARN 29135 --- [http-nio-10020-exec-6] c.s.s.c.s.t.kontur.CreditRiskReceiver    : Received error message from KonturKycService for inn: 570006526
+2018-08-24 13:16:08.004  WARN 29135 --- [http-nio-10020-exec-6] .s.s.m.s.s.r.u.CreditRequestRisksHandler : Error processing scoring result for inn/ogrn: 570006526 with error: Произошла ошибка во время получения скоринг бала.
+2018-08-24 13:16:08.004  WARN 29135 --- [http-nio-10020-exec-6] c.s.s.m.s.s.r.s.CreditRequestService     : RequestRiskHandler returned an error: Произошла ошибка во время получения скоринг бала.
+2018-08-24 14:55:27.149  WARN 29135 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535111727148, current=DOWN, previous=UP]
+2018-08-24 14:56:33.527  WARN 714 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-24 14:57:17.294  WARN 714 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 14:57:17.352  WARN 714 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 14:57:17.486  WARN 714 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 14:57:17.500  WARN 714 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 14:57:51.894  WARN 714 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 14:57:51.919  WARN 714 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 15:34:32.374  WARN 714 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535114072374, current=DOWN, previous=UP]
+2018-08-24 15:35:35.116  WARN 2283 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-24 15:36:18.864  WARN 2283 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 15:36:18.903  WARN 2283 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 15:36:19.057  WARN 2283 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 15:36:19.098  WARN 2283 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 15:36:53.584  WARN 2283 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 15:36:53.709  WARN 2283 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 16:09:41.536  WARN 2283 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535116181536, current=DOWN, previous=UP]
+2018-08-24 16:10:47.379  WARN 3674 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-24 16:11:28.795  WARN 3674 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 16:11:28.853  WARN 3674 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 16:11:28.961  WARN 3674 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 16:11:29.006  WARN 3674 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 16:12:04.216  WARN 3674 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 16:12:04.262  WARN 3674 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 16:18:56.792  WARN 3674 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535116736792, current=DOWN, previous=UP]
+2018-08-24 16:20:01.671  WARN 4566 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-24 16:20:41.307  WARN 4566 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 16:20:41.331  WARN 4566 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 16:20:41.507  WARN 4566 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 16:20:41.527  WARN 4566 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 16:21:17.126  WARN 4566 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 16:21:17.164  WARN 4566 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 16:25:10.701  WARN 4566 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535117110701, current=DOWN, previous=UP]
+2018-08-24 16:26:09.498  WARN 5310 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-24 16:26:53.371  WARN 5310 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 16:26:53.414  WARN 5310 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 16:26:53.578  WARN 5310 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 16:26:53.583  WARN 5310 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 16:27:29.136  WARN 5310 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 16:27:29.240  WARN 5310 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 16:28:47.318  WARN 5310 --- [http-nio-10020-exec-1] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
+2018-08-24 17:44:39.620  WARN 5310 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535121879620, current=DOWN, previous=UP]
+2018-08-24 17:45:43.531  WARN 7762 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-24 17:46:27.399  WARN 7762 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 17:46:27.424  WARN 7762 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-24 17:46:27.602  WARN 7762 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 17:46:27.607  WARN 7762 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-24 17:47:00.343  WARN 7762 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 17:47:00.410  WARN 7762 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-24 20:48:26.351  WARN 7762 --- [http-nio-10020-exec-5] .s.s.m.s.s.r.u.CreditRequestRisksHandler : Error processing account reservation for inn: 5047085094 with error: По данному клиенту уже есть заявка на открытие счета
+2018-08-24 20:48:26.352  WARN 7762 --- [http-nio-10020-exec-5] c.s.s.m.s.s.r.s.CreditRequestService     : RequestRiskHandler returned an error: По данному клиенту уже есть заявка на открытие счета
+2018-08-26 23:03:18.891  WARN 7762 --- [http-nio-10020-exec-4] c.s.s.c.s.t.kontur.KonturKycAdapter      : KonturKycService returned an error. Company is not exists.
+2018-08-26 23:04:14.252  WARN 7762 --- [http-nio-10020-exec-8] .s.s.m.s.s.r.u.CreditRequestRisksHandler : Error processing account reservation for inn: 5047085094 with error: По данному клиенту уже есть заявка на открытие счета
+2018-08-26 23:04:14.252  WARN 7762 --- [http-nio-10020-exec-8] c.s.s.m.s.s.r.s.CreditRequestService     : RequestRiskHandler returned an error: По данному клиенту уже есть заявка на открытие счета
+2018-08-27 12:23:06.222  WARN 7762 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535361786222, current=DOWN, previous=UP]
+2018-08-27 12:24:16.077  WARN 20166 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-27 12:25:02.158  WARN 20166 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 12:25:02.187  WARN 20166 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 12:25:02.400  WARN 20166 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 12:25:02.405  WARN 20166 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 12:25:47.121  WARN 20166 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-27 12:25:47.203  WARN 20166 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-27 12:46:04.472  WARN 20166 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535363164472, current=DOWN, previous=UP]
+2018-08-27 12:47:12.200  WARN 22014 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-27 12:47:55.151  WARN 22014 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 12:47:55.242  WARN 22014 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 12:47:55.446  WARN 22014 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 12:47:55.486  WARN 22014 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 12:48:30.190  WARN 22014 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-27 12:48:30.243  WARN 22014 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-27 13:26:56.062  WARN 22014 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535365616062, current=DOWN, previous=UP]
+2018-08-27 13:27:55.523  WARN 23999 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-27 13:28:39.612  WARN 23999 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 13:28:39.644  WARN 23999 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 13:28:39.811  WARN 23999 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 13:28:39.839  WARN 23999 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 13:29:14.723  WARN 23999 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-27 13:29:14.751  WARN 23999 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-27 15:15:07.072  WARN 23999 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535372107072, current=DOWN, previous=UP]
+2018-08-27 15:16:11.058  WARN 27556 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-27 15:17:03.760  WARN 27556 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 15:17:03.790  WARN 27556 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 15:17:04.022  WARN 27556 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 15:17:04.069  WARN 27556 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 15:17:46.042  WARN 27556 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-27 15:17:46.111  WARN 27556 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-27 16:01:57.681  WARN 27556 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535374917681, current=DOWN, previous=UP]
+2018-08-27 16:02:56.840  WARN 30252 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-27 16:03:44.012  WARN 30252 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 16:03:44.019  WARN 30252 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 16:03:44.260  WARN 30252 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 16:03:44.275  WARN 30252 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 16:04:27.043  WARN 30252 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-27 16:04:27.254  WARN 30252 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-27 16:07:46.887  WARN 30252 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535375266887, current=DOWN, previous=UP]
+2018-08-27 16:08:51.544  WARN 31057 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-27 16:09:35.397  WARN 31057 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 16:09:35.447  WARN 31057 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 16:09:35.683  WARN 31057 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 16:09:35.688  WARN 31057 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 16:10:08.238  WARN 31057 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-27 16:10:08.280  WARN 31057 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-27 18:12:56.171  WARN 31057 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535382776171, current=DOWN, previous=UP]
+2018-08-27 18:14:02.443  WARN 4418 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-27 18:14:46.192  WARN 4418 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 18:14:46.213  WARN 4418 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-27 18:14:46.405  WARN 4418 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 18:14:46.434  WARN 4418 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-27 18:15:17.831  WARN 4418 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-27 18:15:17.890  WARN 4418 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-28 15:20:45.378  WARN 4418 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535458845378, current=DOWN, previous=UP]
+2018-08-28 15:21:58.198  WARN 7928 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-28 15:22:40.529  WARN 7928 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-28 15:22:40.573  WARN 7928 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-28 15:22:40.782  WARN 7928 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-28 15:22:40.787  WARN 7928 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-28 15:23:11.414  WARN 7928 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-28 15:23:11.438  WARN 7928 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-28 16:24:34.307  WARN 7928 --- [http-nio-10020-exec-8] c.s.s.c.s.t.kontur.KonturKycService      : Nether inn or ogrn parameter was provided
+2018-08-28 16:24:34.322  WARN 7928 --- [http-nio-10020-exec-8] c.s.s.m.s.a.c.GlobalExceptionHandler     : Error processing scoring result with message: Компания не найдена в сервисе Контур.
+2018-08-28 16:31:53.198  WARN 7928 --- [http-nio-10020-exec-4] c.s.s.c.s.t.kontur.KonturKycService      : Nether inn or ogrn parameter was provided
+2018-08-28 16:31:53.201  WARN 7928 --- [http-nio-10020-exec-4] c.s.s.m.s.a.c.GlobalExceptionHandler     : Error processing scoring result with message: Компания не найдена в сервисе Контур.
+2018-08-28 16:58:38.608  WARN 7928 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1535464718608, current=DOWN, previous=UP]
+2018-08-28 16:59:48.404  WARN 15532 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/main-srv/apibank_light,database_evolve": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2018-08-28 17:00:31.047  WARN 15532 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-28 17:00:31.096  WARN 15532 --- [main] o.h.b.i.IdGeneratorInterpreterImpl       : HHH000392: Hibernate does not support SequenceGenerator.initialValue() unless 'hibernate.id.new_generator_mappings' set
+2018-08-28 17:00:31.251  WARN 15532 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-28 17:00:31.296  WARN 15532 --- [main] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2018-08-28 17:01:02.582  WARN 15532 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-28 17:01:02.596  WARN 15532 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-08-28 17:30:45.019  WARN 15532 --- [http-nio-10020-exec-1] c.s.s.c.s.t.kontur.KonturKycAdapter      : KonturKycService returned an error. Company is not exists.
+2018-08-28 17:30:47.656  WARN 15532 --- [http-nio-10020-exec-4] c.s.s.c.s.t.kontur.KonturKycAdapter      : KonturKycService returned an error. Company is not exists.
+2018-08-28 17:30:49.239  WARN 15532 --- [http-nio-10020-exec-6] c.s.s.c.s.t.kontur.KonturKycService      : Nether inn or ogrn parameter was provided
+2018-08-28 17:30:59.151  WARN 15532 --- [http-nio-10020-exec-7] c.s.s.c.s.t.kontur.KonturKycAdapter      : KonturKycService returned an error. Company is not exists.
+2018-08-28 17:57:43.261  WARN 15532 --- [http-nio-10020-exec-3] .s.s.m.s.s.r.u.CreditRequestRisksHandler : Error processing account reservation for inn: 5048037495 with error: По данному клиенту уже есть заявка на открытие счета
+2018-08-28 17:57:43.262  WARN 15532 --- [http-nio-10020-exec-3] c.s.s.m.s.s.r.s.CreditRequestService     : RequestRiskHandler returned an error: По данному клиенту уже есть заявка на открытие счета
+2018-08-28 18:00:32.255  WARN 15532 --- [http-nio-10020-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2018-08-28 18:00:32.255 ERROR 15532 --- [http-nio-10020-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uk_mn7ouhkwi07ove2kp2fkjn1n7"
+  Detail: Key (companies_id)=(100034) already exists.
+2018-08-28 18:00:32.274  WARN 15532 --- [http-nio-10020-exec-7] c.s.s.c.a.utils.CommonExceptionHandler   : Common exception handler received an exception: could not execute statement; SQL [n/a]; constraint [uk_mn7ouhkwi07ove2kp2fkjn1n7]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2018-08-28 18:04:42.899  WARN 15532 --- [http-nio-10020-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2018-08-28 18:04:42.900 ERROR 15532 --- [http-nio-10020-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uk_mn7ouhkwi07ove2kp2fkjn1n7"
+  Detail: Key (companies_id)=(100034) already exists.
+2018-08-28 18:04:42.902  WARN 15532 --- [http-nio-10020-exec-3] c.s.s.c.a.utils.CommonExceptionHandler   : Common exception handler received an exception: could not execute statement; SQL [n/a]; constraint [uk_mn7ouhkwi07ove2kp2fkjn1n7]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2018-08-28 18:05:50.866  WARN 15532 --- [http-nio-10020-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2018-08-28 18:05:50.867 ERROR 15532 --- [http-nio-10020-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uk_mn7ouhkwi07ove2kp2fkjn1n7"
+  Detail: Key (companies_id)=(100035) already exists.
+2018-08-28 18:05:50.868  WARN 15532 --- [http-nio-10020-exec-2] c.s.s.c.a.utils.CommonExceptionHandler   : Common exception handler received an exception: could not execute statement; SQL [n/a]; constraint [uk_mn7ouhkwi07ove2kp2fkjn1n7]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2018-08-28 18:23:32.305  WARN 15532 --- [http-nio-10020-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2018-08-28 18:23:32.306 ERROR 15532 --- [http-nio-10020-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uk_mn7ouhkwi07ove2kp2fkjn1n7"
+  Detail: Key (companies_id)=(100024) already exists.
+2018-08-28 18:23:32.308  WARN 15532 --- [http-nio-10020-exec-5] c.s.s.c.a.utils.CommonExceptionHandler   : Common exception handler received an exception: could not execute statement; SQL [n/a]; constraint [uk_mn7ouhkwi07ove2kp2fkjn1n7]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2018-08-28 18:25:31.583  WARN 15532 --- [http-nio-10020-exec-10] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2018-08-28 18:25:31.583 ERROR 15532 --- [http-nio-10020-exec-10] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uk_mn7ouhkwi07ove2kp2fkjn1n7"
+  Detail: Key (companies_id)=(100024) already exists.
+2018-08-28 18:25:31.585  WARN 15532 --- [http-nio-10020-exec-10] c.s.s.c.a.utils.CommonExceptionHandler   : Common exception handler received an exception: could not execute statement; SQL [n/a]; constraint [uk_mn7ouhkwi07ove2kp2fkjn1n7]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2018-08-28 18:26:58.644  WARN 15532 --- [http-nio-10020-exec-8] .s.s.m.s.s.r.u.CreditRequestRisksHandler : Error processing account reservation for inn: 7728240240 with error: По данному клиенту уже есть заявка на открытие счета
+2018-08-28 18:26:58.644  WARN 15532 --- [http-nio-10020-exec-8] c.s.s.m.s.s.r.s.CreditRequestService     : RequestRiskHandler returned an error: По данному клиенту уже есть заявка на открытие счета
+2018-08-28 18:47:01.546  WARN 15532 --- [http-nio-10020-exec-2] .s.s.m.s.s.r.u.CreditRequestRisksHandler : Error processing account reservation for inn: 5048037495 with error: По данному клиенту уже есть заявка на открытие счета
+2018-08-28 18:47:01.547  WARN 15532 --- [http-nio-10020-exec-2] c.s.s.m.s.s.r.s.CreditRequestService     : RequestRiskHandler returned an error: По данному клиенту уже есть заявка на открытие счета
+2018-08-28 18:48:27.068  WARN 15532 --- [http-nio-10020-exec-8] .s.s.m.s.s.r.u.CreditRequestRisksHandler : Error processing account reservation for inn: 7728240240 with error: По данному клиенту уже есть заявка на открытие счета
+2018-08-28 18:48:27.069  WARN 15532 --- [http-nio-10020-exec-8] c.s.s.m.s.s.r.s.CreditRequestService     : RequestRiskHandler returned an error: По данному клиенту уже есть заявка на открытие счета

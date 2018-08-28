@@ -1,13 +1,17 @@
-import services.utilities as util
-import datetime as dt
+import sys
+import os
+import libs.utilities as util
 
-events_log = util.extract_fields()
 
-start_time = dt.datetime(2018, 8, 21, 18, 29)
-end_time = dt.datetime(2018, 8, 21, 18, 30)
-util.filter(events_log, start_time, end_time)
-util.filter(events_log, thread_name='deprecation')
+log = util.extract_fields()
 
+results = util.filter_events(log)
+if results is not None:
+    for event in results:
+        print(f'Found {event.timestamp}, {event.log_level}, {event.thread}, {event.message}, {event.stack_trace}')
+else:
+    print(u'No results found')
+input('Press any key')
 
 # TODO add fake useragent utility
 '''
