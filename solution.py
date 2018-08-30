@@ -1,18 +1,20 @@
 import sys
 import os
 import libs.utilities as util
+import libs.gui_util as ui
 
 
-log = util.extract_fields()
-
+ui.run()
+'''
+# This works but testing out main menu
 results = util.filter_events(log)
 if results is not None:
     for event in results:
-        print(f'Found {event.timestamp}, {event.log_level}, {event.thread}, {event.message}, {event.stack_trace}')
+        print(f'Found {event.timestamp}, {event.log_level}, {event.instance}, {event.message}, {event.stack_trace}')
 else:
     print(u'No results found')
 input('Press any key')
-
+'''
 # TODO add fake useragent utility
 '''
 from fake_useragent import UserAgent
