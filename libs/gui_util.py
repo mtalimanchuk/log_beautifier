@@ -129,6 +129,9 @@ class MainFrame(wx.Frame):
                       "About",
                       wx.OK|wx.ICON_INFORMATION)
 
+    def OnApplyFilter(self, event):
+        None
+
 
 def run():
     app = wx.App()
