@@ -2,7 +2,6 @@ import sys
 import os
 import libs.utilities as util
 import libs.gui_util as ui
-from fake_useragent import UserAgent
 
 ui.run()
 '''
