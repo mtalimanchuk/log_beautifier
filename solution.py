@@ -1,7 +1,7 @@
 import sys
 import os
 import libs.utilities as util
-import libs.gui_util as ui
+import libs.gui_graphics as ui
 
 ui.run()
 '''

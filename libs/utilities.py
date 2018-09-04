@@ -3,12 +3,14 @@ import logging
 from datetime import datetime
 import time
 
-LOG_FILE_PATH = '/Projects/Log Beautifier/libs/log.txt'
+content_splitter_rgx = r'(?=\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d{3})'
 timestamp_rgx = r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d{3}'
 log_level_rgx = r'INFO|ERROR|WARN|TRACE|DEBUG|FATAL'
 instance_rgx = r'\[.+?(?= :)'
 message_rgx = r'(?<=: ).*(?=\n)'
 stack_trace_rgx = r'(?<=\n\s).*'
+str_to_timestamp_converter_pattern = '%Y-%m-%d %H:%M:%S.%f'
+extra_spaces_cleanup_rgx = r'  +'
 
 
 class Log:
@@ -28,23 +30,34 @@ class Filter:
         self.instance = instance
 
 
-def read_file(path):
+def _try_read_file(path):
 
-    fd = open(path, 'r', encoding='utf8')
-    content = fd.read()
-    fd.close()
-    return content
+    try:
+        fd = open(path, 'r', encoding='utf8')
+        content = fd.read()
+        fd.close()
+        return content
+    except:
+        print(f'Error reading {path}')
+        return None
 
 
-def extract_log_events(path, show_warnings=True):
+def _try_split(content):
+    try:
+        event_log = re.split(content_splitter_rgx, content)
+        return event_log
+    except:
+        print(f'Cannot detect log events')
+        return None
 
+
+def _try_beautify(event_log):
     events = []
-    content = read_file(path)
-    event_log = re.split(r'(?=\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d{3})', content)
     for log_line in event_log:
-        event = re.sub(r'  +', ' ', log_line)
+        event = re.sub(extra_spaces_cleanup_rgx, ' ', log_line)
         try:
-            timestamp = datetime.strptime(str(re.search(timestamp_rgx, event).group(0)), '%Y-%m-%d %H:%M:%S.%f')
+            timestamp = datetime.strptime(str(re.search(timestamp_rgx, event).group(0)),
+                                          str_to_timestamp_converter_pattern)
             log_level = re.search(log_level_rgx, event).group(0)
             instance = re.search(instance_rgx, event).group(0)
             message = re.search(message_rgx, event).group(0)
@@ -55,9 +68,23 @@ def extract_log_events(path, show_warnings=True):
                 log = Log(timestamp, str(log_level), str(instance), str(message))
             events.append(log)
         except AttributeError:
-            if show_warnings:
-                logging.warning(f'Skipped line: "{log_line}" because it does not fit the log event mask')
-    return events
+            logging.warning(f'Skipped line: "{log_line}" because it does not fit the log event mask')
+    if events.__len__() == 0:
+        print("Looks like it's not a log file")
+        return None
+    else:
+        return events
+
+
+def parse_log_file(path):
+
+    content = _try_read_file(path)
+    if content is not None:
+        event_log = _try_split(content)
+        if event_log is not None:
+            events = _try_beautify(event_log)
+            return events
+    return None
 
 
 def request_filtering_attributes():
@@ -90,7 +117,6 @@ def request_filtering_attributes():
     filtering_attributes = Filter(start_time, end_time, log_level, instance)
     return filtering_attributes
 
-
 def _filter_by_time(event, start_time, end_time):
 
     if end_time > event.timestamp > start_time:
@@ -98,14 +124,12 @@ def _filter_by_time(event, start_time, end_time):
     else:
         return False
 
-
 def _filter_by_level(event, log_level):
 
     for level in log_level:
         if event.log_level == level:
             return True
     return False
-
 
 def _filter_by_instance(event, instance_name):
 
@@ -115,9 +139,8 @@ def _filter_by_instance(event, instance_name):
         return False
 
 
-def filter_events(log):
+def filter_events(log, attributes):
 
-    attributes = request_filtering_attributes()
     filtered_list = []
     for event in log:
         time_ok = _filter_by_time(event, attributes.start_time, attributes.end_time)
@@ -125,11 +148,7 @@ def filter_events(log):
             level_ok = _filter_by_level(event, attributes.log_level)
         else:
             level_ok = True
-        if attributes.instance is not None:
-            instance_ok = _filter_by_instance(event, attributes.instance)
-        else:
-            instance_ok = True
-        if time_ok and level_ok and instance_ok:
+        if time_ok and level_ok:
             filtered_list.append(event)
     if filtered_list.__len__() == 0:
         return None
