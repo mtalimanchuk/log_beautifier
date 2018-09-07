@@ -36,4 +36,17 @@ def create_filters(wx_start_date, wx_start_time, wx_end_date, wx_end_time, log_l
     filter_attributes = util.Filter(dt_start, dt_end, log_level)
     return filter_attributes
 
+def fill_richText_control(frame, results_to_show):
+    for line in results_to_show:
+        frame.results_richText.AppendText(f'№{line.event_id}: {str(line.timestamp)} ||| {line.log_level} ||| {line.instance}\n')
+        if len(line.message) < 100:
+            frame.results_richText.AppendText(f'>>>MSG:{line.message}\n=============================================\n')
+        else:
+            frame.results_richText.AppendText(f'>>>MSG TOO LONG TO SHOW\n=============================================\n')
+    return None
 
+def fill_instance_listBox(results_to_show):
+    instance_list = []
+    for log_line in results_to_show:
+        if not instance_list.__contains__(log_line.instance): instance_list.append(log_line.instance)
+    return instance_list
