@@ -4,15 +4,20 @@ import wx.xrc
 import wx.richtext
 import datetime
 import libs.gui_util as gu
-import libs.utilities as util
+import libs.parser_util as pu
 
 
 class MainFrame(wx.Frame):
 
+    config = gu.set_config()
+    file_history = wx.FileHistory(5)
+
     def __init__(self, parent):
+
         wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=u"Log Beautifier alpha", pos=wx.DefaultPosition,
                           size=wx.Size(500, 400), style=wx.CAPTION | wx.CLOSE_BOX | wx.SYSTEM_MENU | wx.TAB_TRAVERSAL)
         self.log = None  # TODO store parsed log in .csv
+        self.recent_files = gu.load_recent_files_list(self.file_history, self.config)
 
         self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
 
@@ -38,11 +43,8 @@ class MainFrame(wx.Frame):
 
         open_log_file_sizer.Add(self.recent_files_staticText, 0, wx.ALL, 5)
 
-        recent_files_listBoxChoices = [u"C:\\Users\\Максим\\Desktop\\wxFormBuilder_win32",
-                                       u"C:\\Users\\Максим\\Desktop\\wxFormBuilder_win32\\input_log.txt",
-                                       u"C:\\Projects\\Log Beautifier\\libs\\log.txt",
-                                       u"C:\\Users\\Максим\\Desktop\\wxFormBuilder_win32\\http body.txt",
-                                       u"C:\\Users\\Максим\\Desktop\\New Market Leader\\input.txt", wx.EmptyString]
+
+        recent_files_listBoxChoices = self.recent_files
         self.recent_files_listBox = wx.ListBox(open_log_file_sizer.GetStaticBox(), wx.ID_ANY, wx.DefaultPosition,
                                                wx.DefaultSize, recent_files_listBoxChoices, 0)
         open_log_file_sizer.Add(self.recent_files_listBox, 0, wx.ALL | wx.EXPAND, 5)
@@ -74,15 +76,6 @@ class MainFrame(wx.Frame):
 
         self.Centre(wx.BOTH)
 
-        '''
-        self.new_connection_url_textCtrl.Bind(wx.EVT_TEXT, self.OnNewConnectionUrlText)
-        self.save_new_connection_button.Bind(wx.EVT_BUTTON, self.OnSaveNewConnectionButton)
-        self.saved_connections_listBox.Bind(wx.EVT_LISTBOX, self.OnSelectConnection)
-        self.saved_connections_listBox.Bind(wx.EVT_LISTBOX_DCLICK, self.OnConnectionDClick)
-        self.fetch_button.Bind(wx.EVT_BUTTON, self.OnFetchButton)
-        self.fetch_all_button.Bind(wx.EVT_BUTTON, self.OnFetchAllButton)
-        self.open_log_button.Bind(wx.EVT_BUTTON, self.OnOpenLogUrlButton)
-        '''
         self.recent_files_listBox.Bind(wx.EVT_LISTBOX_DCLICK, self.OnRecentFileDClick)
         self.open_log_file_button.Bind(wx.EVT_BUTTON, self.OnOpenLogButton)
         self.copy_log_from_clipboard_button.Bind(wx.EVT_BUTTON, self.OnCopyFromClipboardButton)
@@ -159,41 +152,6 @@ class MainFrame(wx.Frame):
 
         filter_attributes_panel_sizer.Add(log_level_sizer, 1, wx.ALIGN_CENTER | wx.ALL | wx.EXPAND, 5)
 
-        '''
-        instance_sizer = wx.StaticBoxSizer(
-            wx.StaticBox(self.filter_attributes_panel, wx.ID_ANY, u"Instance name (optional)"), wx.VERTICAL)
-
-        self.instance_staticText = wx.StaticText(instance_sizer.GetStaticBox(), wx.ID_ANY, u"Enter instance name",
-                                                 wx.DefaultPosition, wx.DefaultSize, 0)
-        self.instance_staticText.Wrap(-1)
-
-        instance_sizer.Add(self.instance_staticText, 0, wx.ALL, 5)
-
-        self.instance_textCtrl = wx.TextCtrl(instance_sizer.GetStaticBox(), wx.ID_ANY, wx.EmptyString,
-                                             wx.DefaultPosition, wx.DefaultSize, 0)
-        self.instance_textCtrl.SetToolTip(u"123")
-
-        instance_sizer.Add(self.instance_textCtrl, 0, wx.ALL | wx.EXPAND, 5)
-
-        self.instance_list_staticText = wx.StaticText(instance_sizer.GetStaticBox(), wx.ID_ANY,
-                                                      u"or choose from the list below", wx.DefaultPosition,
-                                                      wx.DefaultSize, 0)
-        self.instance_list_staticText.Wrap(-1)
-
-        instance_sizer.Add(self.instance_list_staticText, 0, wx.ALL, 5)
-
-        instance_listBoxChoices = [u"12", u"5ihgcjhcj", u"yfylfili", u"ilhifiydhd", u"gfdgsfgsfh", u"sfghsfghsghsfs",
-                                   u"fsf2222", u"gfdgdfgdf", u"dfgdfgdfgs", u"tg4g45g45g", u"54g45g45g45",
-                                   u"brtgbrtbrtbrtb", u"trbwrgbgngfngfn", u"fgrfbrgbrtthetr", u"fgerth25hhw45h6",
-                                   u"iygpiygpiyvf", u"iugpugp9uu", u"lvuyckugucljh", u"fggsgsss"]
-        self.instance_listBox = wx.ListBox(instance_sizer.GetStaticBox(), wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
-                                           instance_listBoxChoices,
-                                           wx.LB_ALWAYS_SB | wx.LB_MULTIPLE | wx.LB_NEEDED_SB | wx.LB_SORT)
-        instance_sizer.Add(self.instance_listBox, 0, wx.ALL | wx.EXPAND, 5)
-
-        filter_attributes_panel_sizer.Add(instance_sizer, 1, wx.ALIGN_CENTER | wx.ALL | wx.EXPAND, 5)
-        '''
-
         self.apply_filters_button = wx.Button(self.filter_attributes_panel, wx.ID_ANY, u"Apply filters",
                                               wx.DefaultPosition, wx.DefaultSize, 0)
         filter_attributes_panel_sizer.Add(self.apply_filters_button, 0, wx.ALIGN_CENTER | wx.ALL | wx.SHAPED, 5)
@@ -230,6 +188,12 @@ class MainFrame(wx.Frame):
 
     # Virtual event handlers, overide them in your derived class
     def OnRecentFileDClick(self, event):
+
+        pathname = event.GetEventObject().GetStringSelection()
+        self.log = gu.try_parse_log_file(pathname)
+
+        wx.StatusBar.SetStatusText(self.main_statusBar, f'{pathname} has been successfully parsed')
+        self._init_filter_attributes_panel()
         event.Skip()
 
     def OnOpenLogButton(self, event):
@@ -242,20 +206,19 @@ class MainFrame(wx.Frame):
             # Proceed loading the file chosen by the user
             pathname = fileDialog.GetPath()
             show_warnings = self.show_parser_warnings_checkBox.GetValue()
-
             self.log = gu.try_parse_log_file(pathname)
-
-            wx.StatusBar.SetStatusText(self.main_statusBar, f'{pathname} has been successfully parsed')
-            self._init_filter_attributes_panel()
+            if self.log is not None:
+                self.file_history.AddFileToHistory(pathname)
+                self.file_history.Save(self.config)
+                self.config.Flush()
+                wx.StatusBar.SetStatusText(self.main_statusBar, f'{pathname} has been successfully parsed')
+                self._init_filter_attributes_panel()
+            else:
+                print('CANT PARSE THIS UH')
         event.Skip()
 
     def OnCopyFromClipboardButton(self, event):
         event.Skip()
-
-    def OnApplyFiltersButton(self, event):
-        event.Skip()
-
-
 
     def OnOpenLogUrlButton(self, event):
         event.Skip()
@@ -263,12 +226,13 @@ class MainFrame(wx.Frame):
     def OnApplyFiltersButton(self, event):
 
         attributes = self.collect_filter_attributes()
-        filtered_list = util.filter_events(self.log, attributes)
-        #for log_event in filtered_list:
-        #    print(f'TIME:{log_event.timestamp} LOG LEVEL:{log_event.log_level} INSTANCE:{log_event.instance} MSG:{log_event.message}')
-        print('Opening results...')
-        results = ResultsFrame(None, filtered_list)
-        results.Show()
+        filtered_list = pu.filter_events(self.log, attributes)
+        if filtered_list is not None:
+            print('Opening results...')
+            results = ResultsFrame(None, filtered_list)
+            results.Show()
+        else:
+            print('Here will be a wx.Dialogue with error: No items found with given criteria')
         event.Skip()
 
 
@@ -287,7 +251,6 @@ class ResultsFrame(wx.Frame):
                                                          wx.DefaultSize,
                                                          wx.TE_READONLY | wx.BORDER_SUNKEN | wx.HSCROLL | wx.VSCROLL | wx.WANTS_CHARS)
 
-        # TODO add this to gui_util
         gu.fill_richText_control(self, results_to_show)
 
         results_sizer.Add(self.results_richText, 1, wx.EXPAND, 5)
@@ -298,7 +261,7 @@ class ResultsFrame(wx.Frame):
         self.instance_panel.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_3DLIGHT))
 
         instance_panel_sizer = wx.BoxSizer(wx.VERTICAL)
-        instance_listBoxChoices = gu.fill_instance_listBox(results_to_show)
+        instance_listBoxChoices = gu.get_instance_list(results_to_show)
         self.instance_listBox = wx.ListBox(self.instance_panel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
                                            instance_listBoxChoices, wx.LB_MULTIPLE)
         instance_panel_sizer.Add(self.instance_listBox, 0, wx.ALL | wx.EXPAND, 5)
@@ -312,17 +275,17 @@ class ResultsFrame(wx.Frame):
         self.results_toolBar.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_3DLIGHT))
 
         self.clear_instance_filter_tool = self.results_toolBar.AddTool(wx.ID_ANY, u"Clear instance filter",
-                                                                            wx.ArtProvider.GetBitmap(
-                                                                                wx.ART_DEL_BOOKMARK, wx.ART_TOOLBAR),
-                                                                            wx.NullBitmap, wx.ITEM_NORMAL,
-                                                                            wx.EmptyString, wx.EmptyString, None)
+                                                                       wx.ArtProvider.GetBitmap(
+                                                                           wx.ART_DEL_BOOKMARK, wx.ART_TOOLBAR),
+                                                                       wx.NullBitmap, wx.ITEM_NORMAL,
+                                                                       wx.EmptyString, wx.EmptyString, None)
 
         self.save_results_tool = self.results_toolBar.AddTool(wx.ID_ANY, u"Save results",
-                                                                   wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE,
-                                                                                            wx.ART_TOOLBAR),
-                                                                   wx.NullBitmap, wx.ITEM_NORMAL,
-                                                                   u"Save filtered results in a file", wx.EmptyString,
-                                                                   None)
+                                                              wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE,
+                                                                                       wx.ART_TOOLBAR),
+                                                              wx.NullBitmap, wx.ITEM_NORMAL,
+                                                              u"Save filtered results in a file", wx.EmptyString,
+                                                              None)
 
         self.results_searchCtrl = wx.SearchCtrl(self.results_toolBar, wx.ID_ANY, wx.EmptyString, wx.Point(-1, -1),
                                                 wx.DefaultSize, 0)
@@ -349,6 +312,13 @@ class ResultsFrame(wx.Frame):
         pass
 
     # Virtual event handlers, overide them in your derived class
+
+    def OnShowFullMessage(self, event):
+        s = event.GetString()
+        commands = self.results_richText.CommandProcessor
+        self.results_richText.MoveToLineEnd()  # TODO cursor here should be moved to some safe space that was not formatted during initial drawing
+        self.results_richText.WriteText(f'{s}')
+
     def OnSaveResultsTool(self, event):
         event.Skip()
 
@@ -356,11 +326,11 @@ class ResultsFrame(wx.Frame):
         event.Skip()
 
     def OnInstanceListBox(self, event):
-        instances = []
+        chosen_instances = []
         for selection in self.instance_listBox.GetSelections():
-            instances.append(self.instance_listBox.GetString(selection))
-        print(instances)
-        #final_filtered_results =
+            chosen_instances.append(self.instance_listBox.GetString(selection))
+        print(chosen_instances)
+        # final_filtered_results =
         event.Skip()
 
 

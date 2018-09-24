@@ -7,7 +7,7 @@ content_splitter_rgx = r'(?<=\n)(?=\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d{3})'
 timestamp_rgx = r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d{3}'
 log_level_rgx = r'INFO|ERROR|WARN|TRACE|DEBUG|FATAL'
 instance_rgx = r'\[.+?(?= :)'
-message_rgx = r'(?<=: ).*'
+message_rgx = r'(?<=:\s).*'
 str_to_timestamp_converter_pattern = '%Y-%m-%d %H:%M:%S.%f'
 extra_spaces_cleanup_rgx = r'  +'
 
@@ -41,7 +41,6 @@ def _try_read_file(path):
         print(f'Error reading {path}')
         return None
 
-
 def _try_split(content):
     try:
         event_log = re.split(content_splitter_rgx, content)
@@ -49,7 +48,6 @@ def _try_split(content):
     except:
         print(f'Cannot detect log events')
         return None
-
 
 def _try_extract_events(event_log):
     events = []
@@ -76,44 +74,16 @@ def _try_extract_events(event_log):
 
 def parse_log_file(path):
 
+    # TODO change to try-except
     content = _try_read_file(path)
     if content is not None:
         event_log = _try_split(content)
         if event_log is not None:
             events = _try_extract_events(event_log)
-            return events
+            if events is not None:
+                return events
     return None
 
-
-def request_filtering_attributes():
-
-    print(u'Press enter on input to omit the filter')
-    start_time_input = input('Enter time frame using format dd-MM-yyyy HH:mm.ss\nFrom: ')
-    end_time_input = input('To: ')
-    try:
-        if start_time_input != '':
-            start_time = datetime.strptime(start_time_input, '%d-%m-%Y %H:%M.%S')
-        else:
-            start_time = datetime(1, 1, 1)
-        if end_time_input != '':
-            end_time = datetime.strptime(end_time_input, '%d-%m-%Y %H:%M.%S')
-        else:
-            end_time = datetime.now()
-    except ValueError:
-        print(u'Wrong date-time format')
-
-    log_level_input = input('Enter log level (INFO/ERROR/WARN/TRACE/DEBUG/FATAL) dividing multiple arguments with space :').upper()
-    if log_level_input == '':
-        log_level = None
-    else:
-        log_level = log_level_input.split()
-
-    instance = input('Enter a part of the instance name: ')
-    if instance == '':
-        instance = None
-
-    filtering_attributes = Filter(start_time, end_time, log_level, instance)
-    return filtering_attributes
 
 def _filter_by_time(event, start_time, end_time):
 
@@ -122,12 +92,14 @@ def _filter_by_time(event, start_time, end_time):
     else:
         return False
 
+
 def _filter_by_level(event, log_level):
 
     for level in log_level:
         if event.log_level == level:
             return True
     return False
+
 
 # TODO rewrite instance filtration algorithm
 def filter_by_instances(results, instances):
